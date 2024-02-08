@@ -14,14 +14,14 @@ public class ObjectSpawn : InteractableItem
         if (isObjectSpawned)
         {
             objectSpawnTransform.position = hit.point;
-            GameManager.GetInstance().GetPlayerUnit().MoveUnitToDestination(objectSpawnTransform.position);
         }
         else
         {
             objectSpawnTransform = Instantiate(objectToSpawn, hit.point, Quaternion.identity);
             isObjectSpawned = true;
-            GameManager.GetInstance().GetPlayerUnit().MoveUnitToDestination(objectSpawnTransform.position);
         }
+
+        GameManager.GetInstance().GetPlayerUnit().MoveUnitToDestination(objectSpawnTransform.position);
 
         Debug.Log("OBJECT SPAWN IS INTERACTING");
     }

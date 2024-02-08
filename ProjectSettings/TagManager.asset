@@ -14,8 +14,8 @@ TagManager:
   - Interactable
   - Ground
   - CharacterBody
-  - 
-  - 
+  - Unit
+  - Player
   - 
   - 
   - 
