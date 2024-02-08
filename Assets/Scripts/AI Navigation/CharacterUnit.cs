@@ -3,21 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class CharacterUnit : MonoBehaviour
+public class CharacterUnit : MonoBehaviour, IDamageable
 {
     [SerializeField] protected Transform agentDestination;
 
     [SerializeField] protected Transform rayCastOrigin;
 
     [Range(0f,20f)]
-    [SerializeField] protected float checkDistance = 5f;
+    [SerializeField] protected float checkDistance = 10f;
 
     [Range(0f, 20f)]
-    [SerializeField] protected float checkRadius = 5f;
+    [SerializeField] protected float checkRadius = 0.3f;
 
     [SerializeField] protected UnitType unitType;
     [SerializeField] protected UnitType oppositionType;
     [SerializeField] protected LayerMask layerMask;
+
+    [Range(0.1f, 2f)]
+    [SerializeField] protected float attackRange = 0.5f;
+
+    [SerializeField] protected float health = 100f;
+
+    [SerializeField] protected float damageAmount = 10f;
 
     protected NavMeshAgent agent;
     protected RaycastHit hit;
@@ -65,15 +72,24 @@ public class CharacterUnit : MonoBehaviour
             else
             {
                 Debug.Log("No Unit Found");
+
+                MoveUnitToDestination(hit.transform.position);
+
+                Attack(hit.transform);
             }
 
         }
     }
 
 
-    public virtual void Attack()
+    public virtual void Attack(Transform target)
     {
+        IDamageable damageable = target.GetComponent<IDamageable>();
 
+        if (Vector3.Distance(agent.transform.position, target.position) < attackRange)
+        {
+            damageable.DealDamage(damageAmount);
+        }
     }
 
     public UnitType GetUnitType()
@@ -88,6 +104,11 @@ public class CharacterUnit : MonoBehaviour
         Gizmos.DrawWireSphere(rayCastOrigin.position + rayCastOrigin.forward * checkDistance, checkRadius);
         Gizmos.DrawLine(rayCastOrigin.position, rayCastOrigin.position + rayCastOrigin.forward * checkDistance);
         
+    }
+
+    public void DealDamage(float damageAmount)
+    {
+        health -= damageAmount * Time.deltaTime;
     }
 }
 
