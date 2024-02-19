@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shoot : MonoBehaviour
 {
@@ -9,7 +10,10 @@ public class Shoot : MonoBehaviour
 	public float weaponRange = 50f;                                     // Distance in Unity units over which the player can fire
 	public float hitForce = 100f;                                       // Amount of force which will be added to objects with a rigidbody shot by the player
 	public Transform gunEnd;                                            // Holds a reference to the gun end object, marking the muzzle location of the gun
+	public Button shootButton;
 
+
+	private bool shootPressed = false;
 	private Camera fpsCam;                                              // Holds a reference to the first person camera
 	private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);    // WaitForSeconds object used by our ShotEffect coroutine, determines time laser line will remain visible
 	private AudioSource gunAudio;                                       // Reference to the audio source which will play our shooting sound effect
@@ -19,6 +23,7 @@ public class Shoot : MonoBehaviour
 
 	void Start()
 	{
+		shootButton.onClick.AddListener(ShootPressed);
 		// Get and store a reference to our LineRenderer component
 		laserLine = GetComponent<LineRenderer>();
 
@@ -29,12 +34,16 @@ public class Shoot : MonoBehaviour
 		fpsCam = GetComponentInParent<Camera>();
 	}
 
-
+	public void ShootPressed()
+    {
+		shootPressed = true;
+    }
 	void Update()
 	{
 		// Check if the player has pressed the fire button and if enough time has elapsed since they last fired
-		if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
+		if (shootPressed == true && Time.time > nextFire) //INPUT
 		{
+			shootPressed = false;
 			// Update the time when our player can fire next
 			nextFire = Time.time + fireRate;
 
