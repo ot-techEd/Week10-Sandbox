@@ -67,6 +67,7 @@ public class CharacterUnit : MonoBehaviour, IDamageable
                 if ( unitFound.GetUnitType() == oppositionType)
                 {
                     Debug.Log($"I , the {unitType} found My Opposition{oppositionType}");
+                    Attack(hit.transform);
                 }
             }
             else
@@ -85,6 +86,7 @@ public class CharacterUnit : MonoBehaviour, IDamageable
     public virtual void Attack(Transform target)
     {
         IDamageable damageable = target.GetComponent<IDamageable>();
+        Debug.Log($"{gameObject.name}: distance from {target.name} is {Vector3.Distance(agent.transform.position, target.position)}");
 
         if (Vector3.Distance(agent.transform.position, target.position) < attackRange)
         {

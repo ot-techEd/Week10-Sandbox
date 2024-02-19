@@ -1547,7 +1547,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -5207,10 +5207,15 @@ PrefabInstance:
       propertyPath: hitForce
       value: 2000
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8908976686900402417, guid: 6049f88c65f8d43e4a3fddc1b94b67c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5770577280133185008, guid: 6049f88c65f8d43e4a3fddc1b94b67c7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1747234467}
   m_SourcePrefab: {fileID: 100100000, guid: 6049f88c65f8d43e4a3fddc1b94b67c7, type: 3}
 --- !u!1 &808710796 stripped
 GameObject:
@@ -6623,8 +6628,8 @@ MonoBehaviour:
   oppositionType: 2
   layerMask:
     serializedVersion: 2
-    m_Bits: 1536
-  attackRange: 0.5
+    m_Bits: 512
+  attackRange: 2
   health: 100
   damageAmount: 10
 --- !u!136 &1014136169
@@ -6995,7 +7000,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -7255,7 +7260,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1162464226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7277,7 +7282,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 1536
-  attackRange: 0.5
+  attackRange: 2
   health: 100
   damageAmount: 10
   patrolPositions:
@@ -7779,7 +7784,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -9950,6 +9955,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 134321865}
   m_LocalEulerAnglesHint: {x: 0, y: -30, z: 0}
+--- !u!1 &1747234466 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5770577280133185008, guid: 6049f88c65f8d43e4a3fddc1b94b67c7,
+    type: 3}
+  m_PrefabInstance: {fileID: 748372281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1747234467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747234466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc20c0f7f399c48a183c59d398f3b47d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunDamage: 1
+  fireRate: 0.25
+  weaponRange: 50
+  hitForce: 500
+  gunEnd: {fileID: 1854806382}
 --- !u!1 &1775370361
 GameObject:
   m_ObjectHideFlags: 0
@@ -10228,6 +10256,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1846186023}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1854806382 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 846038427607092714, guid: 6049f88c65f8d43e4a3fddc1b94b67c7,
+    type: 3}
+  m_PrefabInstance: {fileID: 748372281}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1873379132
 GameObject:
   m_ObjectHideFlags: 0
@@ -10353,7 +10387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1901337136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10375,7 +10409,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 1536
-  attackRange: 0.5
+  attackRange: 2
   health: 100
   damageAmount: 10
   patrolPositions:
