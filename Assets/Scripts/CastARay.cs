@@ -36,7 +36,7 @@ public class CastARay : MonoBehaviour
         {
             Hover();
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E)) //INPUT
             {
 
                 interactable = hit.transform.GetComponent<IInteractable>();
