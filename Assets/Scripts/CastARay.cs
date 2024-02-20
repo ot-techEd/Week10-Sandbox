@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CastARay : MonoBehaviour
 {
@@ -12,14 +13,20 @@ public class CastARay : MonoBehaviour
 
     [SerializeField] private Camera cam;
 
+    [SerializeField] private Button interactButton;
 
+    private bool interactPressed = false;
     private RaycastHit hit;
 
     private IInteractable interactable;
     // Start is called before the first frame update
     void Start()
     {
-
+        interactButton.onClick.AddListener(InteractPressed);
+    }
+    public void InteractPressed()
+    {
+        interactPressed = true;
     }
 
     // Update is called once per frame
@@ -36,9 +43,9 @@ public class CastARay : MonoBehaviour
         {
             Hover();
 
-            if (Input.GetKeyDown(KeyCode.E)) //INPUT
+            if (interactPressed == true) //INPUT
             {
-
+                interactPressed = false;
                 interactable = hit.transform.GetComponent<IInteractable>();
                 if (interactable != null)
                 {
